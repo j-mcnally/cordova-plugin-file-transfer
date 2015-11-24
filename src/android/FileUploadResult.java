@@ -30,6 +30,7 @@ public class FileUploadResult {
     private int responseCode = -1;      // HTTP response code
     private String response = null;     // HTTP response
     private String objectId = null;     // FileTransfer object id
+    private String headers = null;
 
     public long getBytesSent() {
         return bytesSent;
@@ -55,6 +56,15 @@ public class FileUploadResult {
         this.response = response;
     }
 
+
+    public String getHeaders() {
+        return headers;
+    }
+
+    public void setHeaders(String headers) {
+        this.headers = headers;
+    }
+
     public String getObjectId() {
         return objectId;
     }
@@ -68,6 +78,7 @@ public class FileUploadResult {
                 "{bytesSent:" + bytesSent +
                 ",responseCode:" + responseCode +
                 ",response:" + JSONObject.quote(response) +
+                ",headers:" + JSONObject.quote(headers) +
                 ",objectId:" + JSONObject.quote(objectId) + "}");
     }
 }
