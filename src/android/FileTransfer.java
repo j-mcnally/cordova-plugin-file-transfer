@@ -533,7 +533,7 @@ public class FileTransfer extends CordovaPlugin {
                     Log.d(LOG_TAG, responseString.substring(0, Math.min(256, responseString.length())));
 
                     // send request and retrieve response
-                    String resheaders = new JSONObject(con.getHeaderFields()).toString();
+                    String resheaders = new JSONObject(conn.getHeaderFields()).toString();
                     result.setHeaders(resheaders);
                     result.setResponseCode(responseCode);
                     result.setResponse(responseString);
