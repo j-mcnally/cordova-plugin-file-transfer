@@ -256,7 +256,7 @@ public class FileTransfer extends CordovaPlugin {
         } catch (ClassCastException e) {
         }
 
-        if (!gotCookie) {
+        if (!gotCookie && CookieManager.getInstance() != null) {
             cookie = CookieManager.getInstance().getCookie(target);
         }
 
@@ -466,9 +466,9 @@ public class FileTransfer extends CordovaPlugin {
 
                         long prevBytesRead = 0;
                         while (bytesRead > 0) {
+                            totalBytes += bytesRead;
                             result.setBytesSent(totalBytes);
                             sendStream.write(buffer, 0, bytesRead);
-                            totalBytes += bytesRead;
                             if (totalBytes > prevBytesRead + 102400) {
                                 prevBytesRead = totalBytes;
                                 Log.d(LOG_TAG, "Uploaded " + totalBytes + " of " + fixedLength + " bytes");
